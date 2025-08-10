@@ -21,7 +21,7 @@ def show_afa_gb(switch_page):
                                       min_value=today_years_ago,
                                       key='a')
 
-    optionen_eigenschaften = ['Betriebsvermögen und keine Wohnzwecke und Bauantrag nach 31. März 1958 gestellt',
+    optionen_eigenschaften = ['Betriebsvermögen und keine Wohnzwecke und Bauantrag nach 31. März 1985 gestellt',
                               'andere']
     nutzung = st.selectbox('Nutzung / Eigenschaften des Gebäudes', optionen_eigenschaften)
 
@@ -35,7 +35,7 @@ def show_afa_gb(switch_page):
         optionen = ['ja', 'nein']
         eigene_wohnzwecke = st.selectbox('teilweise Nutzung für eigene Wohnzwecke?', optionen)
 
-    elif nutzung == 'Betriebsvermögen und keine Wohnzwecke und Bauantrag nach 31. März 1958 gestellt':
+    elif nutzung == 'Betriebsvermögen und keine Wohnzwecke und Bauantrag nach 31. März 1985 gestellt':
         eigene_wohnzwecke = 'nein'
 
 

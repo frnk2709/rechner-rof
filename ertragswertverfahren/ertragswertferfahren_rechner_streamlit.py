@@ -25,6 +25,7 @@ def show_ertragswertverfahren_rechner(switch_page):
     abweichung_vergleichsmiete = []
     neue_mieten = []
 
+
     def berechne_bodenwert(bodenrichtwert, grundstuecksgroesse):
         brw = Decimal(str(bodenrichtwert))
         gr = Decimal(str(grundstuecksgroesse))
@@ -96,8 +97,6 @@ def show_ertragswertverfahren_rechner(switch_page):
         return Decimal(vervielfaeltiger).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
 
 
-
-
     # Eingaben
 
     bodenrichtwert = st.number_input('Bodenrichtwert:', min_value=0)
@@ -118,7 +117,6 @@ def show_ertragswertverfahren_rechner(switch_page):
         eingabe_miete = st.number_input(f'Miete:', key=f'a{i}')
         eingabe_flaeche = st.number_input(f'Fläche:', min_value=1, key=f'b{i}')
         mieten_pruefen(eingabe_miete, eingabe_flaeche, vergleichsmiete)
-
 
     # Berechnungen
 
@@ -151,10 +149,11 @@ def show_ertragswertverfahren_rechner(switch_page):
 
     grundstuecksertragswert = bodenwert + gebaeudeertragswert
 
-    
+
     # Ergebnisanzeige
 
     if st.button('Berechnen'):
+
         st.write('Bodenwert:', f'{bodenwert} €')
         st.write('Rohertrag:', f'{rohertrag:.2f} €')
         st.write('Verwaltungskosten:', f'{verwaltungskosten} €')
@@ -192,6 +191,7 @@ def show_ertragswertverfahren_rechner(switch_page):
                        'Weil die Restnutzungsdauer die Mindestnutzungsdauer unterschreiten würde, '
                        'wird die Restnutzungsdauer auf 24 Jahre festgelegt.')
 
+
+
     if st.button('zurück'):
         switch_page('menu')
-

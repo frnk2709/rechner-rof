@@ -1,10 +1,10 @@
 import streamlit as st
 from decimal import Decimal, ROUND_HALF_UP
 from openpyxl import load_workbook
+import os
 
 
-pfad = r'rechner_app\ertragswertverfahren\liegschaftszinssatz_tabelle.xlsx'
-wb = load_workbook(pfad)
+wb = load_workbook(liegschaftszinssatz_tabelle.xlsx)
 ws = wb.active
 
 

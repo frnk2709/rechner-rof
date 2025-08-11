@@ -8,12 +8,6 @@ wb = load_workbook(pfad)
 ws = wb.active
 
 
-mieten = []
-flaechen = []
-pruefung_mieten = []
-abweichung_vergleichsmiete = []
-neue_mieten = []
-
 vpi = {
     '2021': 104.3,
     '2022': 113.5,
@@ -24,6 +18,12 @@ vpi = {
 
 def show_ertragswertverfahren_rechner(switch_page):
     st.title('Ertragswertverfahren')
+
+    mieten = []
+    flaechen = []
+    pruefung_mieten = []
+    abweichung_vergleichsmiete = []
+    neue_mieten = []
 
     def berechne_bodenwert(bodenrichtwert, grundstuecksgroesse):
         brw = Decimal(str(bodenrichtwert))

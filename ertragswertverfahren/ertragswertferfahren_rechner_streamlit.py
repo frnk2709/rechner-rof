@@ -4,7 +4,8 @@ from openpyxl import load_workbook
 import os
 
 
-wb = load_workbook('liegschaftszinssatz_tabelle.xlsx')
+excel_path = os.path.join('ertragswertverfahren', 'liegenschaftszinssatz_tabelle.xlsx')
+wb = load_workbook(excel_path)
 ws = wb.active
 
 

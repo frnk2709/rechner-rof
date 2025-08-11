@@ -4,7 +4,7 @@ from openpyxl import load_workbook
 import os
 
 
-wb = load_workbook(liegschaftszinssatz_tabelle.xlsx)
+wb = load_workbook('liegschaftszinssatz_tabelle.xlsx')
 ws = wb.active
 
 

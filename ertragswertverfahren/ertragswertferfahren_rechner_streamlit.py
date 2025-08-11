@@ -1,11 +1,9 @@
 import streamlit as st
 from decimal import Decimal, ROUND_HALF_UP
 from openpyxl import load_workbook
-import os
 
 
-aktueller_ordner = os.path.dirname(__file__)
-pfad = os.path.join(aktueller_ordner, 'liegschaftszinssatz_tabelle.xlsx')
+pfad = r'rechner_app\ertragswertverfahren\liegschaftszinssatz_tabelle.xlsx'
 wb = load_workbook(pfad)
 ws = wb.active
 
@@ -32,29 +30,27 @@ def show_ertragswertverfahren_rechner(switch_page):
         gr = Decimal(str(grundstuecksgroesse))
         bodenwert = brw * gr
         return bodenwert
-    
-    
+
     def berechne_rohertrag():
         rohertrag = sum(mieten) * 12
         return rohertrag
-    
-    
+
     def mieten_pruefen(eingabe_miete, eingabe_flaeche, vergleichsmiete):
         miete = Decimal(str(eingabe_miete))
         flaeche = Decimal(str(eingabe_flaeche))
-    
+
         miete_qm = miete / flaeche
-    
+
         vgl_miete = Decimal(str(vergleichsmiete))
-    
+
         verhaeltnis = ((miete_qm - vgl_miete) / vgl_miete)
         betrag_verhaeltnis = abs(verhaeltnis)
-    
+
         abweichung_vergleichsmiete.append(betrag_verhaeltnis)
-    
+
         miete_neu = vgl_miete * flaeche
         neue_mieten.append(miete_neu)
-    
+
         if betrag_verhaeltnis > Decimal('0.2') and not miete == 0:
             miete = miete_neu
             pruefung_mieten.append('v')
@@ -63,27 +59,27 @@ def show_ertragswertverfahren_rechner(switch_page):
             pruefung_mieten.append('l')
         else:
             pruefung_mieten.append('ok')
-    
+
         mieten.append(miete)
         flaechen.append(flaeche)
-    
+
     def berechne_angepasster_vpi(vpi_aktuell):
         vpi_angepasst = Decimal(str(vpi_aktuell)) / Decimal('77.1')
         return vpi_angepasst.quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
-    
+
     def berechne_verwaltungskosten(vpi_angepasst, anzahl_wohnungen):
         verwaltungskosten = Decimal('230') * vpi_angepasst * anzahl_wohnungen
         return verwaltungskosten.quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
-    
+
     def berechne_instandhaltungskosten(vpi_angepasst):
         flaeche_gesamt = sum(flaechen)
         instandhaltungskosten = Decimal('9') * vpi_angepasst * flaeche_gesamt
         return instandhaltungskosten.quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
-    
+
     def berechne_mietausfallwagnis(rohertrag):
         mietausfallwagnis = Decimal('0.02') * rohertrag
         return mietausfallwagnis.quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
-    
+
     def bestimme_restnutzungsdauer(jahr_bewertungsstichtag, jahr_bezugsfertigkeit):
         alter_gebaeude = Decimal(str(jahr_bewertungsstichtag)) - Decimal(str(jahr_bezugsfertigkeit))
         gesamtnutzungsdauer = 80
@@ -92,7 +88,7 @@ def show_ertragswertverfahren_rechner(switch_page):
         if restnutzungsdauer < mindestnutzungsdauer:
             restnutzungsdauer = mindestnutzungsdauer
         return restnutzungsdauer, mindestnutzungsdauer
-    
+
     def bestimme_vervielfaeltiger(restnutzungsdauer):
         zielzeile = int(restnutzungsdauer + 5)
         zielzeile = f'G{zielzeile}'
@@ -100,7 +96,8 @@ def show_ertragswertverfahren_rechner(switch_page):
         return Decimal(vervielfaeltiger).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
 
 
-    
+
+
     # Eingaben
 
     bodenrichtwert = st.number_input('Bodenrichtwert:', min_value=0)
@@ -201,5 +198,7 @@ def show_ertragswertverfahren_rechner(switch_page):
         abweichung_vergleichsmiete.clear()
         neue_mieten.clear()
 
+
     if st.button('zurück'):
         switch_page('menu')
+

@@ -151,14 +151,7 @@ def show_ertragswertverfahren_rechner(switch_page):
 
     grundstuecksertragswert = bodenwert + gebaeudeertragswert
 
-
-    mieten.clear()
-    flaechen.clear()
-    pruefung_mieten.clear()
-    abweichung_vergleichsmiete.clear()
-    neue_mieten.clear()
     
-
     # Ergebnisanzeige
 
     if st.button('Berechnen'):

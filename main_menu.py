@@ -1,6 +1,7 @@
 import streamlit as st
 from afa_wg_streamlit import show_afa_wg
 from afa_gebaeude import show_afa_gb
+from ertragswertverfahren.ertragswertferfahren_rechner_streamlit import show_ertragswertverfahren_rechner
 
 # Session-State initialisieren
 if 'page' not in st.session_state:
@@ -17,8 +18,12 @@ if st.session_state.page == 'menu':
         switch_page('afa_wg')
     if st.button('AfA für Gebäude'):
         switch_page('afa_gb')
+    if st.button('Ertragswertferfahren'):
+        switch_page('ertragswertverfahren')
 
 elif st.session_state.page == 'afa_wg':
     show_afa_wg(switch_page)
 elif st.session_state.page == 'afa_gb':
     show_afa_gb(switch_page)
+elif st.session_state.page == 'ertragswertverfahren':
+    show_ertragswertverfahren_rechner(switch_page)

@@ -152,6 +152,13 @@ def show_ertragswertverfahren_rechner(switch_page):
     grundstuecksertragswert = bodenwert + gebaeudeertragswert
 
 
+    mieten.clear()
+    flaechen.clear()
+    pruefung_mieten.clear()
+    abweichung_vergleichsmiete.clear()
+    neue_mieten.clear()
+    
+
     # Ergebnisanzeige
 
     if st.button('Berechnen'):
@@ -191,13 +198,6 @@ def show_ertragswertverfahren_rechner(switch_page):
                        'Die Mindestnutzungsdauer beträgt davon 30%, also 24 Jahre. '
                        'Weil die Restnutzungsdauer die Mindestnutzungsdauer unterschreiten würde, '
                        'wird die Restnutzungsdauer auf 24 Jahre festgelegt.')
-
-        mieten.clear()
-        flaechen.clear()
-        pruefung_mieten.clear()
-        abweichung_vergleichsmiete.clear()
-        neue_mieten.clear()
-
 
     if st.button('zurück'):
         switch_page('menu')

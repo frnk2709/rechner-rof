@@ -1,5 +1,5 @@
 import math
-from decimal import Decimal
+from decimal import Decimal, ROUND_FLOOR
 import streamlit as st
 
 
@@ -113,7 +113,7 @@ def show_entfernungspauschale(switch_page):
 
     entfernung_pkw = Decimal('0')
     if abfrage_pkw == 'für einen Teil der Strecke':
-        entfernung_pkw = st.number_input('Strecke, die mit dem Pkw zurückgelegt wurde', min_value=0.0)
+        entfernung_pkw = Decimal(str(st.number_input('Strecke, die mit dem Pkw zurückgelegt wurde', min_value=0.0)))
 
     aufwendungen_oeffentliche = st.number_input('Aufwendungen für öffentliche Verkehrsmittel:', min_value=0.0)
     aufwendungen_ovm = Decimal(str(aufwendungen_oeffentliche))

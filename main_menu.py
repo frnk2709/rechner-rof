@@ -22,7 +22,7 @@ if st.session_state.page == 'menu':
     if st.button('Ertragswertferfahren'):
         switch_page('ertragswertverfahren')
     if st.button('Entfernungspauschale'):
-    switch_page('entfernungspauschale')
+        switch_page('entfernungspauschale')
 
 elif st.session_state.page == 'afa_wg':
     show_afa_wg(switch_page)

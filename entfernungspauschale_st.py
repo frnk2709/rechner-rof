@@ -50,7 +50,7 @@ def show_entfernungspauschale(switch_page):
         if strecke_rest <= 20:
 
             strecke_pkw_bis_20 = min(Decimal('20') - strecke_rest, strecke_pkw)
-            strecke_pkw_ab_20 = max(strecke_pkw - Decimal('20'), Decimal('0'))
+            strecke_pkw_ab_20 = max(strecke - Decimal('20'), Decimal('0'))
 
             ep_rest_bis_20 = tage * strecke_rest * Decimal('0.3')
             ep_pkw_bis_20 = tage * strecke_pkw_bis_20 * Decimal('0.3')

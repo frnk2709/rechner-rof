@@ -25,7 +25,7 @@ if st.session_state.page == 'menu':
     if st.button('Entfernungspauschale'):
         switch_page('entfernungspauschale')
     if st.button('Sonderausgaben'):
-    switch_page('sonderausgaben')
+        switch_page('sonderausgaben')
 
 elif st.session_state.page == 'afa_wg':
     show_afa_wg(switch_page)
